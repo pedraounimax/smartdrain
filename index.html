@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartDrain | Algorix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><nav>
+  <a class="brand" href="#inicio"><svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="#2EC4F1" stroke-width="3"/><path d="M8 12h16M6.5 17h19M8 22h16M13 5v22M19 5v22" stroke="#2EC4F1" stroke-width="1.8"/></svg>SmartDrain</a>
+  <div class="tabs">
+    <button data-tab="inicio" aria-current="page">Início</button>
+    <button data-tab="integrantes">Integrantes</button>
+    <button data-tab="monitoramento">Monitoramento</button>
+  </div>
+</nav></header>
+
+<main>
+<section id="inicio">
+  <div class="hero">
+    <div>
+      <p class="tag">Projeto do grupo Algorix</p>
+      <h1>Cada bueiro da cidade, sob vigilância.</h1>
+      <p class="lead">O SmartDrain mede o nível de água dentro do bueiro em tempo real e avisa antes de ele entupir. A limpeza vai primeiro para onde o risco é maior.</p>
+      <div class="cta"><a class="btn" href="#monitoramento">Ver monitoramento ao vivo</a><a class="btn ghost" href="#integrantes">Conhecer a equipe</a></div>
+    </div>
+    <div class="sim">
+      <svg viewBox="0 0 320 360" role="img" aria-label="Corte de um bueiro com sensor medindo o nível da água">
+        <defs><linearGradient id="wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".95"/><stop offset="1" stop-color="currentColor" stop-opacity=".45"/></linearGradient></defs>
+        <rect x="0" y="20" width="320" height="14" fill="#1D4455"/>
+        <rect x="120" y="18" width="80" height="18" fill="#06202B" stroke="#2EC4F1" stroke-dasharray="4 4"/>
+        <rect x="100" y="34" width="120" height="300" rx="6" fill="#041219" stroke="#17475A" stroke-width="2"/>
+        <rect x="0" y="286" width="100" height="36" fill="#041219" stroke="#17475A" stroke-width="2"/>
+        <rect x="220" y="286" width="100" height="36" fill="#041219" stroke="#17475A" stroke-width="2"/>
+        <g id="water" style="color:var(--ok)"><rect id="wRect" x="101" width="118" fill="url(#wg)"/><rect id="wTop" x="101" width="118" height="3" fill="currentColor"/></g>
+        <rect x="148" y="36" width="24" height="12" rx="3" fill="#2EC4F1"/>
+        <line id="beam" x1="160" x2="160" y1="48" stroke="#2EC4F1" stroke-width="2" stroke-dasharray="3 5"><animate attributeName="stroke-dashoffset" from="16" to="0" dur=".8s" repeatCount="indefinite"/></line>
+        <text x="236" y="52" fill="#8FB3C0" font-size="11">sensor ultrassônico</text>
+        <text x="236" y="66" fill="#8FB3C0" font-size="11">+ ESP32</text>
+      </svg>
+      <div class="simctl">
+        <label for="rain">Simular chuva</label>
+        <input id="rain" type="range" min="5" max="98" value="40">
+        <output id="simOut">—</output>
+      </div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div><b>15 s</b><span>entre uma leitura e outra</span></div>
+    <div><b>3 níveis</b><span>normal, atenção e crítico</span></div>
+    <div><b>24/7</b><span>monitoramento na nuvem</span></div>
+    <div><b>ESP32</b><span>hardware de baixo custo</span></div>
+  </div>
+
+  <h2>O problema</h2>
+  <div class="cols">
+    <div class="card"><h3>Entupimento invisível</h3><p>Lixo e sedimentos se acumulam e ninguém percebe até a primeira chuva forte.</p></div>
+    <div class="card"><h3>Manutenção às cegas</h3><p>A limpeza segue uma rotina fixa, e não a necessidade real de cada bueiro.</p></div>
+    <div class="card"><h3>Alagamentos</h3><p>Um bueiro cheio na hora errada causa prejuízo, trânsito parado e risco para as pessoas.</p></div>
+  </div>
+
+  <h2>Como funciona</h2>
+  <ol class="flow">
+    <li><b>Mede</b><span>O sensor lê a distância até a superfície da água.</span></li>
+    <li><b>Processa</b><span>O ESP32 converte a distância em nível percentual.</span></li>
+    <li><b>Envia</b><span>Via Wi-Fi, a leitura vai para o canal do ThingSpeak.</span></li>
+    <li><b>Alerta</b><span>Este painel mostra o nível e sinaliza quando há risco.</span></li>
+  </ol>
+
+  <h2>O que a sua empresa ganha</h2>
+  <div class="cols">
+    <div class="card"><h3>Manutenção por prioridade</h3><p>Equipes vão direto aos bueiros que realmente precisam de limpeza.</p></div>
+    <div class="card"><h3>Menos alagamentos</h3><p>O alerta chega antes do transbordamento, com tempo para agir.</p></div>
+    <div class="card"><h3>Dados para decidir</h3><p>O histórico de leituras mostra onde e quando os problemas se repetem.</p></div>
+    <div class="card"><h3>Escala acessível</h3><p>Componentes baratos e plataforma gratuita permitem instalar em muitos pontos.</p></div>
+  </div>
+</section>
+
+<section id="integrantes" hidden>
+  <div class="pagehead"><h1>Equipe Algorix</h1><p>Os 6 integrantes por trás do SmartDrain e o papel de cada um.</p></div>
+  <div class="team" id="team"></div>
+</section>
+
+<section id="monitoramento" hidden>
+  <div class="pagehead"><h1>Monitoramento</h1><p>Leituras do ESP32 vindas do ThingSpeak, atualizadas automaticamente.</p></div>
+  <div class="note" id="demoNote" hidden>Modo demonstração: valores simulados. Coloque o ID do canal em <code>CONFIG</code> no <code>script.js</code> para ver os dados reais.</div>
+  <div class="dash">
+    <div class="card gaugebox" id="status" data-s="ok">
+      <svg viewBox="0 0 180 180" aria-hidden="true"><circle cx="90" cy="90" r="70" class="track"/><circle id="arc" cx="90" cy="90" r="70" class="arc" transform="rotate(-90 90 90)"/></svg>
+      <div class="gtxt"><strong id="gPct">—</strong><span>cheio</span></div>
+    </div>
+    <div class="card statusinfo">
+      <small>Situação atual</small>
+      <h2 id="statusTitle">Carregando…</h2>
+      <p id="statusText">Buscando a última leitura.</p>
+      <p class="meta" id="lastUpdate">—</p>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="card"><h3>Nível de água nas últimas leituras</h3><div id="chart"></div></div>
+  <div class="card"><h3>Histórico de alertas</h3><ul class="log" id="log"></ul></div>
+</section>
+</main>
+<footer>SmartDrain · Projeto do grupo Algorix</footer>
+<script src="script.js"></script>
+</body>
+</html>
