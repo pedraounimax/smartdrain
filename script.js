@@ -6,7 +6,7 @@ const CONFIG = {
   readApiKey: "PV1DFF8KMZ8YWRLJ",   // Read API Key (pode ficar vazio se o canal for público)
   updateEveryMs: 5000,              // o site consulta o ThingSpeak a cada 5 s
   results: 40,                      // leituras buscadas para o gráfico
-  maxDistance: 20,                  // distância (cm) com o bueiro vazio
+  maxDistance: 20,                  // distância (cm) do sensor até o fundo (bueiro vazio)
   critAt: 4,                        // distância <= 4 cm  -> CRÍTICO
   warnAt: 12                        // distância < 12 cm  -> ATENÇÃO (senão NORMAL)
   // Field 1 = distância medida pelo sensor, em cm
@@ -81,7 +81,7 @@ function demoRow(prev, at){
 async function fetchFeeds(){
   if(demo){
     if(!demoData){
-      demoData = []; let d = 14; const now = Date.now();
+      demoData = []; let d = 11; const now = Date.now();
       for(let i = CONFIG.results - 1; i >= 0; i--){ const r = demoRow(d, now - i * CONFIG.updateEveryMs); d = +r.field1; demoData.push(r); }
     } else { demoData.push(demoRow(+demoData.at(-1).field1, Date.now())); demoData.shift(); }
     return demoData;
@@ -92,6 +92,14 @@ async function fetchFeeds(){
   const feeds = (await r.json()).feeds || [];
   return feeds.filter(f => !isNaN(parseFloat(f.field1)));  // ignora leituras vazias
 }
+
+let lastAt = null;
+function showAge(){
+  if(!lastAt) return;
+  const sec = Math.max(0, Math.round((Date.now() - new Date(lastAt).getTime()) / 1000));
+  $("#lastUpdate").textContent = `Última leitura: ${new Date(lastAt).toLocaleString("pt-BR")} (há ${sec} s) · o ESP32 envia a cada ~15 s`;
+}
+setInterval(showAge, 1000);
 
 function render(feeds){
   if(!feeds.length){
@@ -107,7 +115,7 @@ function render(feeds){
   $("#gPct").textContent = Math.round(lvl) + "%";
   $("#statusTitle").textContent = LABEL[s].toUpperCase();
   $("#statusText").textContent = DESC[s];
-  $("#lastUpdate").textContent = `Última leitura: ${new Date(last.created_at).toLocaleString("pt-BR")} · atualiza a cada ${CONFIG.updateEveryMs / 1000} s`;
+  lastAt = last.created_at; showAge();
 
   $("#stats").innerHTML =
     `<div class="card stat"><small>Distância até a água</small><strong>${d.toFixed(1)}<em>cm</em></strong></div>
