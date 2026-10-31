@@ -7,7 +7,7 @@ const CONFIG = {
   updateEveryMs: 5000,              // o site consulta o ThingSpeak a cada 5 s
   results: 40,                      // leituras buscadas para o gráfico
   maxDistance: 20,                  // distância (cm) do sensor até o fundo (bueiro vazio)
-  critAt: 6,                        // distância <= 4 cm  -> CRÍTICO
+  critAt: 8,                        // distância <= 4 cm  -> CRÍTICO
   warnAt: 12                        // distância < 12 cm  -> ATENÇÃO (senão NORMAL)
   // Field 1 = distância medida pelo sensor, em cm
 };
