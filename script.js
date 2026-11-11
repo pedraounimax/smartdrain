@@ -31,39 +31,39 @@ const CONFIG = {
 const MEMBERS = [
 
   {
-    nome: "Integrante 1",
-    funcao: "Programação do ESP32",
-    foto: ""
+    nome: "Pedro Rodrigues",
+    funcao: "Desenvolvimento do site e circuito",
+    foto: "fotos/pedrao.jpeg"
   },
 
   {
-    nome: "Integrante 2",
-    funcao: "Eletrônica e sensores",
-    foto: ""
+    nome: "Marcos Paulo",
+    funcao: "Projeto 3D",
+    foto: "fotos/marcos.jpeg"
   },
 
   {
-    nome: "Integrante 3",
-    funcao: "Desenvolvimento do site",
-    foto: ""
+    nome: "Lucas Piacente",
+    funcao: "Desenvolvimento do código",
+    foto: "fotos/pia.jpeg"
   },
 
   {
-    nome: "Integrante 4",
-    funcao: "Integração com o ThingSpeak",
-    foto: ""
-  },
-
-  {
-    nome: "Integrante 5",
-    funcao: "Pesquisa e documentação",
-    foto: ""
-  },
-
-  {
-    nome: "Integrante 6",
+    nome: "Victor Dib",
     funcao: "Montagem e testes",
-    foto: ""
+    foto: "fotos/dib.jpeg"
+  },
+
+  {
+    nome: "Lucas Deodato",
+    funcao: "Montagem e testes",
+    foto: "fotos/deodato.jpeg"
+  },
+
+  {
+    nome: "Kauanne Torres",
+    funcao: "Documentação",
+    foto: "fotos/ka.jpeg"
   }
 
 ];
